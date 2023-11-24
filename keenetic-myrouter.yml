@@ -1,0 +1,7 @@
+---
+
+- hosts: myrouter
+  roles:
+    - common
+    - unblock-rkn
+    - disk-backup

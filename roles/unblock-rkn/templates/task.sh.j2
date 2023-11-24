@@ -1,0 +1,14 @@
+#!/opt/bin/sh
+{{ ansible_managed | comment }}
+
+IFACE="{{ unblock_rkn_iface }}"
+TABLE={{ unblock_rkn_table }}
+
+/opt/bin/unblock-rkn.sh -i $IFACE -t $TABLE <<- EOM
+    {% for item in unblock_rkn_list %}
+        {{ item }}
+    {% endfor %}
+
+EOM
+
+exit 0;

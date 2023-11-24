@@ -1,0 +1,2 @@
+[myrouter]
+myrouter.keenetic.link ansible_port=222

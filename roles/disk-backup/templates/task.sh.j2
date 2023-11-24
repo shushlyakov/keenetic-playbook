@@ -1,0 +1,8 @@
+#!/opt/bin/sh
+{{ ansible_managed | comment }}
+
+{% for item in disk_backup_list %}
+/opt/bin/disk-backup.sh -s "{{item.src}}" -d "{{item.dst}}" -b "{{item.bkp}}"
+{% endfor %}
+
+exit 0;

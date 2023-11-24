@@ -1,0 +1,9 @@
+{
+  "name": "keenetic-playbook",
+  "version": "1.0.0",
+  "scripts": {
+    "play:keenetic-myrouter": "ansible-playbook keenetic-myrouter.yml -i inventories/production"
+  },
+  "dependencies": {
+  }
+}

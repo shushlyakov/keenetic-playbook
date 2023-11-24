@@ -1,0 +1,21 @@
+#!/bin/sh
+{{ ansible_managed | comment }}
+
+IFACE="{{ unblock_rkn_iface }}"
+TABLE={{ unblock_rkn_table }}
+
+[ "$1" == "hook" ] || exit 0;
+[ "$system_name" == $IFACE ] || exit 0;
+
+case ${change}-${connected}-${link}-${up} in
+  link-yes-up-up)
+    /opt/bin/unblock-rkn.sh -i $IFACE -t $TABLE <<- EOM
+        {% for item in unblock_rkn_list %}
+            {{ item }}
+        {% endfor %}
+
+EOM
+  ;;
+esac;
+
+exit 0;

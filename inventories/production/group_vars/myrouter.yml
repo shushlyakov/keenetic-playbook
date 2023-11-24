@@ -1,0 +1,13 @@
+---
+
+# unblock_rkn
+unblock_rkn_iface: "nwg0"
+unblock_rkn_list:
+  - AS32934 # by Autonomous System Numbers (ASNs)
+  - example.com # by domain name
+
+# disk_backup
+disk_backup_list:
+  - src: "/tmp/mnt/TOSHIBA EXT/Диск"
+    dst: "/tmp/mnt/TOSHIBA EXT/Диск (резервные копии)"
+    bkp: "mega:Backups/myrouter.keenetic.link"

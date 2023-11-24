@@ -1,0 +1,19 @@
+- name: Install dependencies
+  raw: |
+    opkg install cron rclone
+
+- name: Copy script
+  copy:
+    src: files/disk-backup.sh
+    dest: /opt/bin/
+    mode: a+x
+
+- name: Create task
+  template:
+    src: task.sh.j2
+    dest: /opt/etc/cron.monthly/100-disk-backup.sh
+    mode: a+x
+
+- name: Restart cron
+  raw: |
+    /opt/etc/init.d/S10cron restart

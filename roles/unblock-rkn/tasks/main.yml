@@ -1,0 +1,24 @@
+- name: Install dependencies
+  raw: |
+    opkg install cron whois bind-dig
+
+- name: Copy script
+  copy:
+    src: files/unblock-rkn.sh
+    dest: /opt/bin/
+    mode: a+x
+
+- name: Create hook
+  template:
+    src: hook.sh.j2
+    dest: /opt/etc/ndm/ifstatechanged.d/100-unblock-rkn.sh
+
+- name: Create task
+  template:
+    src: task.sh.j2
+    dest: /opt/etc/cron.daily/100-unblock-rkn.sh
+    mode: a+x
+
+- name: Restart cron
+  raw: |
+    /opt/etc/init.d/S10cron restart

@@ -1,0 +1,5 @@
+---
+- name: Upgrade system
+  raw: | 
+    opkg update 
+    opkg upgrade
